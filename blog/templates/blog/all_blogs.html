@@ -1,0 +1,25 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-5 my-5" align="center">
+    <h1>Sailor's Blog</h1>
+  </div>
+</div>
+
+<br>
+
+<div class="row justify-content-center">
+  <div class="col-sm-9 col-md-6">
+    {% for blog in blog_project %}
+
+    <a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.blog_title }}</h2></a>
+    <p>{{ blog.blog_date | date:'M d Y' }}</p>
+    <p>{{ blog.blog_description }}</p>
+
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endblock %}

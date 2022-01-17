@@ -1,0 +1,105 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'calculator/style.css' %}">
+
+<div class="container text-center my-5">
+  <div class="div">
+    <div class="col">
+      <h1>Sailor's Calculator</h1>
+
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-auto contain-col">
+
+      <div class="row mx-2 mt-3">
+        <div class="col display-row" align="right">
+          <p class="my-1" style="font-family:monospace;">12305</p>
+        </div>
+      </div>
+
+      <form class="" action="{% url 'calculator:calculator' %}" method="get" id="calc">
+        <div class="row main-row mx-1">
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-danger" form="calc" type="submit" name="clear" value="AC">
+          </div>
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-danger" form="calc" type="submit" name="?" value="?">
+          </div>
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-danger" form="calc" type="submit" name="percent" value="%">
+          </div>
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-warning" form="calc" type="submit" name="divide" value="÷">
+          </div>
+        </div>
+
+        <div class="row main-row mx-1">
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-light" form="calc" type="submit" name="1" value="1">
+          </div>
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-light" form="calc" type="submit" name="2" value="2">
+          </div>
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-light" form="calc" type="submit" name="3" value="3">
+          </div>
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-warning" form="calc" type="submit" name="multiply" value="×">
+          </div>
+        </div>
+
+        <div class="row main-row mx-1">
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-light" form="calc" type="submit" name="4" value="4">
+          </div>
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-light" form="calc" type="submit" name="5" value="5">
+          </div>
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-light" form="calc" type="submit" name="6" value="6">
+          </div>
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-warning" form="calc" type="submit" name="subtract" value="-">
+          </div>
+        </div>
+
+        <div class="row main-row mx-1">
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-light" form="calc" type="submit" name="7" value="7">
+          </div>
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-light" form="calc" type="submit" name="8" value="8">
+          </div>
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-light" form="calc" type="submit" name="9" value="9">
+          </div>
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-warning" form="calc" type="submit" name="add" value="+">
+          </div>
+        </div>
+
+        <div class="row main-row mb-3 mx-1">
+          <div class="col-6 zero-col g-2">
+            <input class="btn btn-light" form="calc" type="submit" name="0" value="0">
+          </div>
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-light fw-bold" form="calc" type="submit" name="deciaml" value=".">
+          </div>
+          <div class="col-3 main-col g-2">
+            <input class="btn btn-success" form="calc" type="submit" name="equals" value="=">
+          </div>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
