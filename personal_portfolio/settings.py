@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-oie)rdz8ln7t)btdx6hnd20*a4zgjb0s++h9sy0zj9e*4_w^1&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sailormetz.pythonanywhere.com']
 
 
 # Application definition
@@ -121,6 +121,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
+
+
 
 """
 we created these two lines, MEDIA_URL and MEDIA_ROOT, to specify where we want to store all the media for our project. im not sure why we cant just do this when we created the upload_to parameter.
