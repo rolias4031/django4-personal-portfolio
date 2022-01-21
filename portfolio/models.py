@@ -10,3 +10,4 @@ class Project(models.Model):
     description = models.CharField(max_length=300)
     image = models.ImageField(upload_to='portfolio/images/') # uploaded to images folder inside portfolio app folder
     url = models.URLField(blank=True)
+    href = models.CharField(max_length=100)
