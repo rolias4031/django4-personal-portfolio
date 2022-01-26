@@ -8,11 +8,6 @@ def dictionary(request):
 
     dictionary = PyDictionary()
 
-    # definitions = None
-    # synonyms = None
-    # antonyms = None
-    # errormsg = None
-
     the_word = request.GET.get('the_word')
 
     try:
@@ -38,4 +33,4 @@ def dictionary(request):
         definitions, synonyms, antonyms, errormsg = None, None, None, None
         the_word = ''
 
-    return render(request, 'dictionary/dictionary.html', {'the_word':the_word, 'definitions':definitions, 'synonyms':synonyms, 'antonyms':antonyms, 'errormsg':errormsg, 'x':type(definitions), 'thesaurus':{'synonyms':synonyms, 'antonyms':antonyms}})
+    return render(request, 'dictionary/dictionary.html', {'the_word':the_word, 'definitions':definitions, 'synonyms':synonyms, 'antonyms':antonyms, 'errormsg':errormsg, 'thesaurus':{'synonyms':synonyms, 'antonyms':antonyms}})

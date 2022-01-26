@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def synonyms(term):
+
     response = requests.get('https://www.thesaurus.com/browse/{}'.format(term))
     soup = BeautifulSoup(response.text, 'lxml')
     soup.find('section', {'class': 'css-17ofzyv e1ccqdb60'})

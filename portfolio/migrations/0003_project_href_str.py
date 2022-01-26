@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='project',
             name='href_str',
-            field=models.CharField(default='{%%}', max_length=100),
+            field=models.CharField(default='{%%}',max_length=100),
             preserve_default=False,
         ),
     ]
