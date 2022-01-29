@@ -26,6 +26,8 @@ urlpatterns = [
     path('dictionary/', include('dictionary.urls'), name="dictionary"),
     path('passwordgenerator/', include('passwordgenerator.urls'), name='passwordgenerator'),
     path('calculator/', include('calculator.urls'), name='calculator'),
+    path('web3scanner/', include('web3scanner.urls'), name='web3scanner'),
+
 ]
 
 """

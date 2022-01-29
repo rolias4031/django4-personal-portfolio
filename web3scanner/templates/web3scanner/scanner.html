@@ -1,0 +1,37 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+{% load static %}
+
+<h1>Sailor's Web3 Scanner</h1>
+
+<form class="" action="{% url 'web3scanner:web3scanner' %}" method="get">
+  <select class="" name="Token">
+    <option value="OMG">OMG</option>
+    <option value="Tether">Tether</option>
+    <option value="Shiba Inu">Shiba Inu</option>
+    <option value="BNB">BNB</option>
+    <option value="HEX">HEX</option>
+    <option value="Matic">Matic</option>
+    <option value="Wrapped BTC">Wrapped BTC</option>
+    <option value="Chainlink">Chainlink</option>
+    <option value="Fantom">Fantom</option>
+
+
+  </select>
+  <input type="submit" name="Submit" value="Get Token Stats">
+
+</form>
+
+{{token_data}}
+<br>
+{% if token_data.is_connected %}
+  {% for key,value in token_data.items%}
+    {{value}}
+    <br>
+  {% endfor %}
+{% endif %}
+
+<br>
+{{error_msg}}
+
+{% endblock %}

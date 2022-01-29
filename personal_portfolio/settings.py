@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'dictionary',
     'passwordgenerator',
     'calculator',
+    'web3scanner',
 ]
 
 MIDDLEWARE = [
