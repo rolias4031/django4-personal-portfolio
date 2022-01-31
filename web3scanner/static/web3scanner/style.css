@@ -1,0 +1,14 @@
+.stat-content {
+  font-size: 17px;
+  margin-left: 5px;
+}
+
+.stat-title {
+  background: rgb(235,235,235);
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.wallet-balance {
+  font-size: 20px;
+}

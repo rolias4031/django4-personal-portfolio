@@ -2,64 +2,79 @@ import json
 from web3 import Web3
 from .scanner_credentials import *
 
+def fetch_token_stats(web3, token_data, token_creds):
 
-def fetch_func_one(token_data, token_creds):
+    abi = json.loads(token_creds['abi'])
+    contract = web3.eth.contract(address=token_creds['contract'], abi=abi)
 
-        web3, connect_bool = web3_connect() #get web3 connection, only do something if connect_bool is True
+    token_funcs = {
+        'Name': contract.functions.name,
+        'Symbol': contract.functions.symbol,
+        'Total Supply': contract.functions.totalSupply,
+        'Decimals': contract.functions.decimals
+        }
 
-        if connect_bool:
+    token_data = {key: value().call() for (key, value) in token_funcs.items()}
+    token_data['Contract Address'] = token_creds['contract']
 
-            abi = json.loads(token_creds['abi'])
-            contract = web3.eth.contract(address=token_creds['contract'], abi=abi)
+    token_data['Total Supply'] = format_number(token_data['Total Supply'], token_data)
 
-            token_funcs = {
-                'Name': contract.functions.name,
-                'Symbol': contract.functions.symbol,
-                'Total Supply': contract.functions.totalSupply,
-                'Decimals': contract.functions.decimals
-                }
+    return token_data
 
-            token_data = {key: value().call() for (key, value) in token_funcs.items()}
-            token_data['is_connected'] = True
-            token_data['Contract Address'] = token_creds['contract']
+def fetch_address_balance(web3, address, token_data, token_creds):
 
-            totalsupply_format(token_data)
+    abi = json.loads(token_creds['abi'])
+    contract = web3.eth.contract(address=token_creds['contract'], abi=abi)
 
-            return token_data
+    raw_wallet_balance = contract.functions.balanceOf(Web3.toChecksumAddress(address)).call()
 
-def tether_fetch(token_data):
+    wallet_balance = format_number(raw_wallet_balance, token_data)
 
-    if web3_connect():
+    percent_totalsupply = round(((float(wallet_balance.replace(",","")))/(float(token_data['Total Supply'].replace(",",""))))*100, 3)
 
-        token_data['is_connected'] = True
-        token_data['token_name'] = "Tether"
+    return wallet_balance, percent_totalsupply
+
+def creds_reset(token_bool=False, wallet_bool=False, error_bool=False):
+    if token_bool:
+        Creds.token_data = {}
+    if wallet_bool:
+        Creds.wallet_data = {key:None for key in Creds.wallet_data.keys()}
+    if error_bool:
+        Creds.error_msg = None
 
 def web3_connect():
-    web3 = Web3(Web3.HTTPProvider(infura))
+    web3 = Web3(Web3.HTTPProvider(Creds.infura_url))
     return web3, web3.isConnected()
 
-def totalsupply_format(token_data):
+def format_number(num_format, token_data):
 
-    decimals = str(token_data['Total Supply'])[-token_data['Decimals']:]
+    decimals = str(num_format)[-token_data['Decimals']:]
 
-    index = len(str(token_data['Total Supply'])) - token_data['Decimals']
-    whole_nums = "{:,}".format(int(str(token_data['Total Supply'])[:index]))
+    index = len(str(num_format)) - token_data['Decimals']
+    whole_nums = "{:,}".format(int(str(num_format)[:index]))
 
-    token_data['Total Supply'] = whole_nums + "." + decimals
+    num_format = whole_nums + "." + decimals
 
-    return
-
+    return num_format
 
 #dictionary that holds the functions for each token and the credentials for each token. key must match the string used in the dropdown menu in the interface.
-credentials = {
-    'OMG':{'function':fetch_func_one, 'contract': omg_contract, 'abi':omg_abi},
-    'Tether':{'function':fetch_func_one, 'contract': tether_contract, 'abi':tether_abi},
-    'Shiba Inu':{'function':fetch_func_one, 'contract': shiba_inu_contract, 'abi': shiba_inu_abi},
-    'BNB':{'function':fetch_func_one, 'contract':bnb_contract, 'abi': bnb_abi},
-    'HEX':{'function':fetch_func_one, 'contract':hex_contract, 'abi': hex_abi},
-    'Wrapped BTC':{'function':fetch_func_one,'contract':wrapped_btc_contract,'abi':wrapped_btc_abi},
-    'Chainlink':{'function':fetch_func_one,'contract':chainlink_contract,'abi':chainlink_abi},
-    'Fantom':{'function':fetch_func_one,'contract':fantom_contract,'abi':fantom_abi}
-    }
-
-infura = 'https://mainnet.infura.io/v3/25d9ebfebc264defaf34b9fa1d6e217b'
+class Creds:
+    token_data = {}
+    wallet_data = {
+        'address': None,
+        'balance': None,
+        'percent_supply': None,
+        }
+    credentials = {
+        'OMG':{'function':fetch_token_stats, 'contract': omg_contract, 'abi':omg_abi},
+        'Tether':{'function':fetch_token_stats, 'contract': tether_contract, 'abi':tether_abi},
+        'Shiba Inu':{'function':fetch_token_stats, 'contract': shiba_inu_contract, 'abi': shiba_inu_abi},
+        'BNB':{'function':fetch_token_stats, 'contract':bnb_contract, 'abi': bnb_abi},
+        'HEX':{'function':fetch_token_stats, 'contract':hex_contract, 'abi': hex_abi},
+        'Wrapped BTC':{'function':fetch_token_stats,'contract':wrapped_btc_contract,'abi':wrapped_btc_abi},
+        'Chainlink':{'function':fetch_token_stats,'contract':chainlink_contract,'abi':chainlink_abi},
+        'Fantom':{'function':fetch_token_stats,'contract':fantom_contract,'abi':fantom_abi}
+        }
+    infura_url = 'https://mainnet.infura.io/v3/25d9ebfebc264defaf34b9fa1d6e217b'
+    current_token = None
+    error_msg = None
