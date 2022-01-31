@@ -1,66 +1,65 @@
 {% extends 'portfolio/base.html' %}
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+{% load static %}
 
-    <div class="container text-center">
-      <div class="row my-5">
-        <div class="col">
-          <h1>Sailor's Password Generator</h1>
-        </div>
-      </div>
+<link rel="stylesheet" type="text/css" href="{% static 'passwordgenerator/style.css' %}">
+
+<div class="container text-center mt-5">
+  <div class="row justify-content-center">
+    <div class="col-10" style="">
+      <h1 class="">Sailor's Password Generator</h1>
     </div>
-
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-2" style="">
-          <form action="{% url 'passwordgenerator:passwordgenerator' %}" method="get">
-            <select name="length" class="my-1">
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21" selected="selected">21</option>
-            </select> Length
-            <br>
-            <input class="my-1" type="checkbox" name="Numbers"> Numbers
-            <br>
-            <input class="my-1" type="checkbox" name="Uppercase"> Uppercase
-            <br>
-            <input class="my-1" type="checkbox" name="Special"> Special Characters
-            <br>
-            <input type="submit" name="Generate" value="Generate Password" class="btn btn-primary my-2" style="width:100%">
-          </form>
-        </div>
-      </div>
+  <div class="row justify-content-center">
+    <div class="col-10" style="">
+      <p class="subhead">Select the length and types of characters you'd like in your password, then click the button.</p>
     </div>
+  </div>
+  </div>
+</div>
 
-    {% if the_password %}
-    <div class="container text-center my-3">
-      <div class="row justify-content-center">
-        <div class="col-8">
-          <h1 class="alert alert-success">{{ the_password }}</h1>
-        </div>
-      </div>
+<div class="container mt-4">
+  <div class="row justify-content-center mx-3">
+    <div class="col-lg-5 col-md-8 col-sm" style="">
+      <form action="{% url 'passwordgenerator:passwordgenerator' %}" method="get">
+        <select name="length" class="big-dd">
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21" selected="selected">21</option>
+        </select>
+        <span class="pw-option">Length</span>
+        <br>
+        <input class="big-cb" type="checkbox" name="Numbers"><span class="pw-option">Numbers</span>
+        <br>
+        <input class="big-cb" type="checkbox" name="Uppercase"><span class="pw-option">Uppercase</span>
+        <br>
+        <input class="big-cb" type="checkbox" name="Special"><span class="pw-option">Special Characters</span>
+        <br>
+        <input type="submit" name="Generate" value="Generate Password" class="btn btn-primary my-2" style="width:100%">
+      </form>
     </div>
-    {% endif %}
+  </div>
+</div>
 
-  </body>
-</html>
+{% if the_password %}
+<div class="container text-center my-3">
+  <div class="row justify-content-center mx-3">
+    <div class="col-12">
+      <h1 class="alert alert-success">{{ the_password }}</h1>
+    </div>
+  </div>
+</div>
+{% endif %}
 
 {% endblock %}

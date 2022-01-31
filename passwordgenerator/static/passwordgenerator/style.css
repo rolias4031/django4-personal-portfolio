@@ -1,0 +1,28 @@
+.pw-option {
+  display: inline-block;
+  font-size: 26px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+
+.big-cb {
+  height: 20px;
+  width: 20px;
+}
+
+.big-dd {
+  height: 30px;
+  width: 50px;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+.div-class {
+  border:solid;
+}
+
+.subhead {
+  font-size: 14px;
+  font-weight: light;
+  color: rgb(150,150,150)
+}
