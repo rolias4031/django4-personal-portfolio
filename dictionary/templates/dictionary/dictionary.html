@@ -1,35 +1,41 @@
 {% extends 'portfolio/base.html' %}
 {% block content %}
 
-<div class="row justify-content-center">
-  <div class="col-12 my-5" align="center">
-    <h1>Sailor's Dictionary</h1>
-    <p class="mt-3" style="color:rgb(150,150,150);">Brought to you by <a href="https://pypi.org/project/PyDictionary/" target="_blank">PyDictionary</a></p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 my-5" align="center">
+      <h1>Sailor's Dictionary</h1>
+      <p class="mt-3" style="color:rgb(150,150,150);">Brought to you by <a href="https://pypi.org/project/PyDictionary/" target="_blank">PyDictionary</a></p>
+    </div>
   </div>
 </div>
 
-<form class="row g-2 justify-content-center" action="{% url 'dictionary:dictionary' %}">
-  <div class="col-lg-4">
-    <input class="form-control" value="" type="text" name="the_word" placeholder="Enter a word in english">
-  </div>
-  <div class="col-auto">
-    <button class="btn btn-primary" type="submit">Submit</button>
-  </div>
-</form>
+<div class="container">
+  <form class="row justify-content-center mx-2" action="{% url 'dictionary:dictionary' %}">
+    <div class="col-lg-5 col-md my-2">
+      <input class="form-control" value="" type="text" name="the_word" placeholder="Enter a word in english">
+    </div>
+    <div class="col-auto my-2">
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+  </form>
+</div>
 
-<div class="row justify-content-center">
-  <div class="col-auto" align="center">
-    <h1 class="mt-4 display-3">{{ the_word }}</h1>
-    {% if errormsg %}
-      <h6 class="alert alert-danger fw-light">{{ errormsg }}</h6>
-    {% endif %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-auto" align="center">
+      <h1 class="mt-4 display-2">{{ the_word }}</h1>
+      {% if errormsg %}
+        <h6 class="alert alert-danger fw-light">{{ errormsg }}</h6>
+      {% endif %}
+    </div>
   </div>
 </div>
 
 {% if definitions %}
 <div class="container">
-  <div class="row justify-content-center mt-4">
-    <div class="col-8">
+  <div class="row justify-content-center mt-4 mx-2">
+    <div class="col-lg-8 col-md">
       <h3>Definitions</h3>
       <hr class="">
     </div>
@@ -38,17 +44,18 @@
 {% endif %}
 
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-8">
+  <div class="row justify-content-center mx-2">
+    <div class="col-lg-8 col-md">
 
       {% for key, value in definitions.items %}
       {% for d in value %}
       <div class="row">
-        <p class="fw-lighter col-1" style="">{{ key|lower }}</p>
+        <p class="fw-light col-1" style="color:rgb(150,150,150)">{{ key|lower }}</p>
         <p class="col ms-4" style="">{{ d }}</p>
       </div>
       {% endfor %}
       {% endfor %}
+
     </div>
   </div>
 </div>
@@ -56,8 +63,8 @@
 {% for key, value in thesaurus.items %}
 {% if value %}
 <div class="container">
-  <div class="row justify-content-center mt-4">
-    <div class="col-8">
+  <div class="row justify-content-center mt-4 mx-2">
+    <div class="col-lg-8 col-md">
       <h3>{{ key | title}}</h3>
       <hr class="">
     </div>
@@ -66,12 +73,12 @@
 {% endif %}
 
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-8">
+  <div class="row justify-content-center mx-2">
+    <div class="col-lg-8 col-md">
       <div class="row">
 
         {% for word in value %}
-        <div class="col-2">
+        <div class="col-md-3 col-4">
           <p>{{ word }}</p>
         </div>
         {% endfor %}
@@ -81,5 +88,8 @@
   </div>
 </div>
 {% endfor %}
+
+<div class="container" style="height:100px;">
+</div>
 
 {% endblock %}
