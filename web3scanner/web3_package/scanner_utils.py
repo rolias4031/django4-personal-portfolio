@@ -1,6 +1,8 @@
 import json
 from web3 import Web3
 from .scanner_credentials import *
+import cryptocompare as cc
+import numpy as np
 
 def fetch_token_stats(web3, token_data, token_creds):
 
@@ -15,11 +17,26 @@ def fetch_token_stats(web3, token_data, token_creds):
         }
 
     token_data = {key: value().call() for (key, value) in token_funcs.items()}
-    token_data['Contract Address'] = token_creds['contract']
 
     token_data['Total Supply'] = format_number(token_data['Total Supply'], token_data)
 
+    token_data['Current Price'] = fetch_cryptocompare_info(Creds.coin_dict, token_data)
+
+    token_data['Contract Address'] = token_creds['contract']
+
     return token_data
+
+def fetch_cryptocompare_info(coin_dict, token_data):
+
+    price = cc.get_price(token_data['Symbol'], currency='USD')[token_data['Symbol']]['USD']
+
+    if price < 0.01:
+        token_data['Current Price'] = "$" + np.format_float_positional(price, trim="-")
+
+    elif price >= 0.01:
+        token_data['Current Price'] = "$" + "{:,}".format(price)
+
+    return token_data['Current Price']
 
 def fetch_address_balance(web3, address, token_data, token_creds):
 
@@ -75,6 +92,7 @@ class Creds:
         'Chainlink':{'function':fetch_token_stats,'contract':chainlink_contract,'abi':chainlink_abi},
         'Fantom':{'function':fetch_token_stats,'contract':fantom_contract,'abi':fantom_abi}
         }
+    coin_dict = cc.get_coin_list(format=False)
     infura_url = 'https://mainnet.infura.io/v3/25d9ebfebc264defaf34b9fa1d6e217b'
     current_token = None
     error_msg = None

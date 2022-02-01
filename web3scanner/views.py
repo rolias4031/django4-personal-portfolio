@@ -2,6 +2,7 @@ import json
 from django.shortcuts import render
 from web3 import Web3
 from .web3_package.scanner_utils import *
+import cryptocompare as cc
 
 #class to hold the web3 connection objects
 class Conn:
@@ -12,14 +13,11 @@ def scanner(request):
     #check for a submission, run the function associated with that token name
     if request.GET.get('token_submit') and Conn.connect_bool:
 
-        print("T1")
-
         Creds.current_token = request.GET.get('Token')
 
         try:
-            print("T2")
             Creds.token_data = Creds.credentials[Creds.current_token]['function'](Conn.web3, Creds.token_data, Creds.credentials[Creds.current_token])
-            print(Creds.token_data)
+            
             creds_reset(wallet_bool=True, error_bool=True)
 
         except KeyError:

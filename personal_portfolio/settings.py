@@ -124,8 +124,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 
-
-
 """
 we created these two lines, MEDIA_URL and MEDIA_ROOT, to specify where we want to store all the media for our project. im not sure why we cant just do this when we created the upload_to parameter.
 1. basically: create the MEDIA_ROOT and copy the BASE_DIR / 'db.sqlite3' line from above.

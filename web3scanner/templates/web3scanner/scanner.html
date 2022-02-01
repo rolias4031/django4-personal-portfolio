@@ -14,7 +14,7 @@
 
 <div class="container">
   <form class="" action="{% url 'web3scanner:web3scanner' %}" method="get">
-    <div class="row justify-content-center" style="">
+    <div class="row justify-content-center mx-2">
 
       <div class="col-lg-3 col-md-4 col-sm" style="">
         <select class="form-select form-select-lg my-2" name="Token">
@@ -41,7 +41,7 @@
 {% if token_data.Name %}
 
   <div class="container my-5">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mx-2">
       <div class="col-lg-10 col-md-12">
         <div class="row justify-content-center">
 
@@ -60,17 +60,17 @@
   <div class="container text-center">
     <form class="" action="{% url 'web3scanner:web3scanner' %}" method="get">
 
-      <div class="row justify-content-center">
+      <div class="row justify-content-center mx-2">
         <div class="col" style="">
           <h5>Search the balance of any {{token_data.Name}} address</h5>
         </div>
       </div>
 
-      <div class="row justify-content-center">
-        <div class="col-lg-6 col-md my-2" style="">
+      <div class="row justify-content-center mx-2 my-2">
+        <div class="col-lg-6 col-md" style="">
             <input class="form-control input-lg" type="text" name="address_field" placeholder="0xdac17f958d2ee523a2206206994597c13d831ec7">
         </div>
-        <div class="col-auto my-2" style="">
+        <div class="col-auto" style="">
           <input class="btn btn-primary btn-md" type="submit" name="address_submit" value="Get Balance">
         </div>
       </div>
@@ -79,8 +79,8 @@
   </div>
 
   <div class="container mt-4">
-    <div class="row justify-content-center">
-      <div class="col-6" style="">
+    <div class="row justify-content-center mx-2">
+      <div class="col-md-6 col-sm" style="">
         {% if wallet_data.balance %}
           <h5 class="stat-title">Address</h5>
           <p class="stat-content">{{wallet_data.address}}</p>
@@ -97,12 +97,15 @@
 
 {% if error_msg %}
   <div class="container text-center mb-5">
-    <div class="row justify-content-center">
-      <div class="col-6">
+    <div class="row justify-content-center mx-2">
+      <div class="col-md-6 col-sm">
         <p class="alert alert-danger">{{error_msg}}</p>
       </div>
     </div>
   </div>
 {% endif %}
+
+<div class="container" style="height:100px">
+</div>
 
 {% endblock %}
