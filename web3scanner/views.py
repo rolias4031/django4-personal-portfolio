@@ -17,7 +17,6 @@ def scanner(request):
 
         try:
             Creds.token_data = Creds.credentials[Creds.current_token]['function'](Conn.web3, Creds.token_data, Creds.credentials[Creds.current_token])
-            
             creds_reset(wallet_bool=True, error_bool=True)
 
         except KeyError:
@@ -30,6 +29,7 @@ def scanner(request):
 
         try:
             Creds.wallet_data['balance'], Creds.wallet_data['percent_supply'] = fetch_address_balance(Conn.web3, Creds.wallet_data['address'], Creds.token_data, Creds.credentials[Creds.current_token])
+            creds_reset(error_bool=True)
 
         except ValueError:
             Creds.error_msg = "That's not a valid address"
