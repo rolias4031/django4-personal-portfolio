@@ -38,4 +38,4 @@ def scanner(request):
     elif Conn.connect_bool == False:
         Creds.error_msg = 'Web3 Connection Failed'
 
-    return render(request, 'web3scanner/scanner.html', {'token_data':Creds.token_data, 'wallet_data':Creds.wallet_data, 'error_msg':Creds.error_msg})
+    return render(request, 'web3scanner/scanner.html', {'token_data':Creds.token_data, 'wallet_data':Creds.wallet_data, 'error_msg':Creds.error_msg,'current_token':Creds.current_token})
