@@ -8,10 +8,12 @@ I will be continually uploading new projects to this site as I complete them. I 
 
 Here's the URL: https://sailormetz.pythonanywhere.com/
 
-**So far I have three projects displayed:**
+**So far I have four projects displayed:**
 
 1. A dictionary app that uses PyDictionary to display the definitions, synonyms, and anytonyms for any english word.
 
 2. A customizable password generator that you can use to generate secure passwords.
 
 3. A basic calculator that can add, subtract, multiply, and divide any two numbers, and convert any number to a percentage.
+
+4. A Web3 scanner that allows you to fetch information for various Ethereum tokens and the wallets that hold those tokens.
