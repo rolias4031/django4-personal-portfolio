@@ -1,0 +1,17 @@
+.title {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.img-style {
+  border-radius: 5px;
+}
+
+.project-title {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 26px;
+}
+
+.project-description {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 15px;
+}

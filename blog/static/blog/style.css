@@ -1,0 +1,51 @@
+.page-title {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: bold;
+}
+
+.title {
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.descrip {
+  font-family: "IBM Plex Serif", serif;
+  font-size: 16px;
+}
+
+.sub {
+  font-family: "IBM Plex Serif", serif;
+  font-style: italic;
+  color: rgb(100,100,100);
+  font-size: 14px;
+}
+
+a {
+  color: rgb(40,40,40);
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(100,100,100);
+}
+
+.detail-title {
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 1.2;
+}
+
+.detail-content {
+  font-family: "IBM Plex Serif", serif;
+  font-size: 18px;
+}
+
+.detail-sub {
+  font-family: "IBM Plex Serif", serif;
+  color: rgb(100,100,100);
+  font-style: italic;
+  font-size: 14px;
+}

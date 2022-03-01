@@ -2,38 +2,48 @@
 {% block content %}
 {% load static %}
 
-<div class="row justify-content-center">
-  <div class="col-4 mt-5 mb-3">
-    <img src="{% static 'portfolio/sailor_headshot.jpeg' %}" class="img-fluid">
+<link rel="stylesheet" type="text/css" href="{% static 'portfolio/style.css' %}">
+
+
+<div class="container mt-3">
+  <div class="row justify-content-center mx-2">
+    <div class="col-lg-5 col-9 mt-5 mb-3">
+      <img src="{% static 'portfolio/sailor_headshot.jpeg' %}" class="img-fluid img-style">
+    </div>
+  </div>
+  <div class="row justify-content-center mx-2">
+    <div class="col-lg-9 col-12 mb-5" align="center">
+      <h1 class="title">I'm Sailor, welcome to my personal site.</h1>
+    </div>
   </div>
 </div>
-<div class="row justify-content-center">
-  <div class="col-7 mb-5" align="center">
-    <h1>I'm Sailor, welcome to my personal site.</h1>
+
+<div class="container my-4">
+
+  <div class="row mx-3">
+    <div class="col-12">
+      <h1 class="title">Portfolio</h1>
+      <hr class="mb-4">
+    </div>
   </div>
-</div>
 
-<h1 class="mx-5">Portfolio</h1>
+  <div class="row mx-3">
 
-<hr class="mx-5">
-<div class="mx-5 my-4">
-  <div class="row">
-
-    {% for project in projects %} <!-- templating language that lets us use logic in html files. Use templating format -->
-    <div class="col-lg-3 col-md-6 mb-3">
+    {% for project in projects %}
+    <div class="col-lg-4 col-sm-6 col-12 mb-3">
 
       {% if project.href %}
       <a href="{% url project.href %}" target="_blank">
-        <img src="{{ project.image.url }}" class="img-fluid mb-2" style="">
+        <img src="{{ project.image.url }}" class="img-style img-fluid mb-2" style="">
       </a>
 
       {% else %}
-        <img src="{{ project.image.url }}" class="img-fluid mb-2" width="500" height="500">
+        <img src="{{ project.image.url }}" class="img-style img-fluid mb-2" width="500" height="500">
 
       {% endif %}
 
-      <h3 class="">{{ project.title }}</h3>
-      <p class="">{{ project.description }}</p>
+      <h4 class="project-title mb-1">{{ project.title }}</h4>
+      <p class="project-description">{{ project.description }}</p>
 
     </div>
     {% endfor %}

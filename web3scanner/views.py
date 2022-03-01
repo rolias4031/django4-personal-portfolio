@@ -5,7 +5,7 @@ from .web3_package.scanner_utils import *
 import cryptocompare as cc
 
 #class to hold the web3 connection objects
-class Conn:
+class Conn():
     web3, connect_bool = web3_connect()
 
 def scanner(request):
