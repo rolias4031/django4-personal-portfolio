@@ -17,3 +17,7 @@ def detail(request, blog_id):
     blog = get_object_or_404(BlogProject, pk=blog_id)
 
     return render(request, 'blog/detail.html', {'blog':blog})
+
+def survivordao_display(request):
+
+    return render(request, 'blog/survivordao_display.html')

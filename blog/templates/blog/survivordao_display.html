@@ -1,0 +1,68 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'blog/survivordao_style.css' %}">
+
+
+<div class="container text-center my-5">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <h1>Survivor DAO</h1>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-5 mx-2">
+    <div class="col-auto">
+      <h5>Learn more:</h5>
+    </div>
+    <div class="col-auto">
+      <a class="dao-link" href="https://github.com/rolias4031/SurvivorDAO"><h5>Github</h5></a>
+    </div>
+    <div class="col-auto">
+      <a class="dao-link" href="https://hackerlink.io/buidl/1989"><h5>DoraHacks</h5></a>
+    </div>
+    <div class="col-auto">
+      <a class="dao-link" href="https://www.youtube.com/watch?v=r_930JlwbKE"><h5>Hackathon Demo Video</h5></a>
+    </div>
+  </div>
+</div>
+
+<div class="container my-3">
+  <div class="row justify-content-center mx-2">
+    <div class="col-lg-7 col-12">
+
+      <p>My friend and I created SurvivorDAO for the ETHDenver 2022 Hackathon, a hackathon focused on Web3 innovation. We managed to take first place in two competitions—one sponsored by <a href="#">Tally.io</a> and another by <a href="#">TrueFi</a>. This is a summary page of our project. Check out our GitHub repo, DoraHacks page, and demo video for more info.</p>
+
+      <h4>Overview</h4>
+
+      <p>We created SurvivorDAO with a simple goal in mind: create Web3's first hostile DAO (Decentralized Autonomous Organization). We were inspired by the infamous TV show Survivor, in which the fundamental game mechanism is voting other contestants off the game.</p>
+
+      <p>The flow of the game follows 3 major steps.</p>
+      <p>1 - The game-window opens and people join by minting an NFT to naturalize themselves as citizens of SurvivorDAO.</p>
+      <p>2 - The game-window closes and the proposal-window opens; citizens are now free to create a proposal to vote any other citizen off the DAO.</p>
+      <p>3 - Citizens vote on proposals as they hit the docket on a first-come-first-serve basis. The successful proposals result in that citizen being exiled from SurvivorDAO. Steps two and three repeat until a single citizen remains.</p>
+      <p>You might have the intuition that SurvivorDAO is open to being "gamed"—you're right. In fact, we encourage citizens to use any subsersive, coniving strategies they can think of to their advantage (so long as they don't involve bugs in the contracts). We gave the DAO few rules to support the exile mechanic and left it open-ended for precisely this reason; we want to see just how clever people can be in pursuit of a prize.</p>
+
+      <h4>More Than a Game</h4>
+
+      <p>We set out to create SurvivorDAO sporting a cheeky grin. We saw the DAO as a statement, as a shock-project for people to have fun with. So we were shocked by the number of people that said SurvivorDAO's exile mechanic might be useful in their own DAOs. After some thought, we realized that the root idea of SurvivorDAO, the threat of exile, may imply a key truth about groups generally. It may seem counterproductive to use mechanics that foster hostility in a DAO. Afterall, the point of a DAO is decentralized, virtual cooperation—why would you want to subvert that? To answer that question we must look at common problems in today's DAOs.</p>
+
+      <p>The majority of today's DAOs have two problems: their members don't vote or make proposals, and the few that do agree too much. In other words, most DAOs are apathetic and rarely decide anything of consequence. There are many reasons a DAO might dwindle in this way, but a reason I believe ranks among the most common is simply that most don't punish apathetic members. SurvivorDAOs exile mechanic changes this.</p>
+
+      <p>In its core, SurvivorDAO holds the idea that a little bit of well-placed tension can make a group more alive. In our case, this mechanic led to many non-desirable and anti-social behaviors (by design), but when integrated with the structure of other DAOs it very may well promote more positive engagement. If the group can remove members from the DAO, then members have a strong incentive to contribute and behave fairly. They'll think twice before placing a lazy vote, not staying up-to-date, or providing little value to the DAO.</p>
+
+      <p>Integrating such a mechanic into ordinary DAOs no doubt brings many other consequences. We hope to see these consequences born out from others borrowing from SurvivorDAO.</p>
+
+      <h4>Tech</h4>
+      <p>SurvivorDAO follows the <a href="https://github.com/OpenZeppelin/openzeppelin-contracts">OpenZeppelin</a> ERC-721 and Governor standards.</p>
+      <p>Our front-end is built with <a href="https://www.djangoproject.com/">Django</a>.</p>
+
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

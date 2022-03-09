@@ -27,6 +27,7 @@ urlpatterns = [
     path('passwordgenerator/', include('passwordgenerator.urls'), name='passwordgenerator'),
     path('calculator/', include('calculator.urls'), name='calculator'),
     path('web3scanner/', include('web3scanner.urls'), name='web3scanner'),
+    path('survivordao/', include('blog.urls'), name='survivordao_display'),
 
 ]
 

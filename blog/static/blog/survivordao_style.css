@@ -1,0 +1,7 @@
+.italics {
+  font-style: italic;
+}
+
+p, h1, h4, h5 {
+  font-family: "IBM Plex Sans", sans-serif;
+}
